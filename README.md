@@ -1,5 +1,5 @@
 # andbase
-android base library.
+android base library. with retrofit2(okhttp, gson), rxjava(rxandroid) ...
 # recently
 ```
 compile 'com.github.linxcool:andbase:1.0.2'

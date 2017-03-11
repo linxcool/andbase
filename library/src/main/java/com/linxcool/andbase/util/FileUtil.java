@@ -25,7 +25,7 @@ import java.util.zip.ZipFile;
 /**
  * Created by huchanghai on 2016/8/25.
  */
-public class FileUtil {
+public final class FileUtil {
 
     private static final int OPTIMIZATION_SIZE = 1024;
 

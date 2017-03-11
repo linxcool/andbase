@@ -1,0 +1,4 @@
+<resources>
+    <string name="library_title">andbase</string>
+    <string name="library_introduce">android base library. with retrofit2(okhttp, gson), rxjava(rxandroid) ...</string>
+</resources>

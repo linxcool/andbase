@@ -1,18 +1,11 @@
-package com.linxcool.andbase.util.view;
+package com.linxcool.andbase.util.ui;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.View;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class UiUtils {
+public class DisplayUtils {
 
 	public static int dp2px(Context context, int dp) {
 		float density = context.getResources().getDisplayMetrics().density;

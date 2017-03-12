@@ -1,4 +1,4 @@
-package com.linxcool.andbase.util.view;
+package com.linxcool.andbase.util.ui;
 
 import android.app.Activity;
 import android.content.Context;

@@ -4,17 +4,9 @@ import android.content.Context;
 
 import com.linxcool.andbase.util.ClassUtil;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-
-import static android.R.attr.name;
-import static com.linxcool.andbase.util.ClassUtil.findSubClasses;
 
 /**
  * Created by linxcool on 17/3/11.

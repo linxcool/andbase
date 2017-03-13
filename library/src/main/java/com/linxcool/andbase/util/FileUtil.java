@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.io.StringReader;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -146,7 +147,6 @@ public final class FileUtil {
         if (TextUtils.isEmpty(fullFilePath)) return false;
         if (isFileExist(fullFilePath)) {
             deleteFile(fullFilePath);
-            //return false;
         }
 
         FileOutputStream fos = null;
@@ -180,6 +180,10 @@ public final class FileUtil {
         return null;
     }
 
+    public static boolean writeString(String fullFilePath, String content) {
+        return writeBytes(fullFilePath, content.getBytes());
+    }
+
     /**
      * 保存字节到指定目录 需要检查目录及文件存在与否
      *
@@ -201,7 +205,7 @@ public final class FileUtil {
     public static boolean writeInputStream(String toPath, InputStream is) {
         try {
             long startPos = 0;
-            File file = new File(toPath + ".tmp" + System.currentTimeMillis());
+            File file = new File(toPath + ".tmp");
 
             if (file.exists()) {
                 if (file.isFile()) startPos = file.length();
@@ -212,7 +216,6 @@ public final class FileUtil {
 
             RandomAccessFile raf = new RandomAccessFile(file, "rw");
             raf.seek(startPos);
-
             is.skip(startPos);
 
             byte[] temp = new byte[OPTIMIZATION_SIZE];

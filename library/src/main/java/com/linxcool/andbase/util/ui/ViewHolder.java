@@ -8,7 +8,20 @@ import android.view.View;
  * @author 胡昌海(linxcool.hu)
  */
 public class ViewHolder {
-	
+
+	/**
+	 * 获取视图控件，例如：<pre>
+	 *  if (convertView == null) {
+	 *  	convertView = LayoutInflater.from(context).inflate(R.layout.xxx, parent, false);
+	 *  }
+	 *  ImageView iv = ViewHolder.get(convertView, R.id.yyy);
+	 *  ....
+	 * </pre>
+	 * @param view convertView
+	 * @param id viewId
+	 * @param <T>
+     * @return
+     */
 	@SuppressWarnings("unchecked")  
 	public static <T extends View> T get(View view, int id) {  
 		SparseArray<View> viewHolder = (SparseArray<View>) view.getTag();  

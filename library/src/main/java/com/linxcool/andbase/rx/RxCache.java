@@ -37,16 +37,16 @@ public class RxCache {
 
         fromNetwork = fromNetwork.map(new Function<T, T>() {
             @Override
-            public T apply(T t) throws Exception {
-                CacheUtil.get(context).put(cacheKey, (Serializable) t, expireTime);
-                return t;
+            public T apply(T obj) throws Exception {
+                CacheUtil.get(context).put(cacheKey, (Serializable) obj, expireTime);
+                return obj;
             }
         });
 
         if (forceRefresh) {
             return fromNetwork;
         } else {
-            return Observable.concat(fromCache, fromNetwork).cache();
+            return Observable.concat(fromCache, fromNetwork).firstElement().toObservable();
         }
     }
 

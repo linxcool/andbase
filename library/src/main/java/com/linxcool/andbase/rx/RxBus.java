@@ -11,7 +11,7 @@ import io.reactivex.processors.PublishProcessor;
  *     disposable = RxBus.get().toFlowable(AbcEvent.class).subscribe(new Consumer<AbcEvent>()});
  *     // send event
  *     RxBus.get().post(new AbcEvent("hello rxbus!"));
- *     // unregist
+ *     // onlyOnce
  *     disposable.dispose();
  * </pre>
  * Created by huchanghai on 2017/3/9.

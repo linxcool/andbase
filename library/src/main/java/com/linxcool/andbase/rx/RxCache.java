@@ -18,6 +18,16 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class RxCache {
 
+    /**
+     * 优先从缓存中加载数据，若失败或过期则通过fromNetwork对象处理
+     * @param context 上下文对象
+     * @param cacheKey 缓存KEY
+     * @param expireTime 过期事件，单位秒
+     * @param fromNetwork 网络处理对象
+     * @param forceRefresh 是否强制刷新
+     * @param <T>
+     * @return
+     */
     public static <T> Observable<T> load(final Context context,
                                          final String cacheKey,
                                          final int expireTime,

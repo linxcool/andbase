@@ -7,11 +7,16 @@ import com.linxcool.andbase.BaseActivity;
 import com.linxcool.andbase.demo.R;
 import com.linxcool.andbase.rx.RxCache;
 import com.linxcool.andbase.rx.RxHelper;
+import com.linxcool.andbase.rx.RxLoadingObserver;
+import com.linxcool.andbase.util.LogUtil;
 import com.linxcool.andbase.util.ui.ToastUtil;
 
 import java.io.Serializable;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.internal.observers.SubscriberCompletableObserver;
@@ -49,34 +54,44 @@ public class RxCacheActivity extends BaseActivity implements Shower {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_UP) {
-            Observable<AbcBean> fromNetwork = Observable
-                    .just(new AbcBean(0, "time is " + System.currentTimeMillis()))
-                    .compose(RxHelper.<AbcBean>scheduleIo2UiThread());
-
-            RxCache.load(this, "abcBean", 10 * 1000, fromNetwork, false).subscribe(new Observer<AbcBean>() {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            Observable<AbcBean> fromNetwork = Observable.create(new ObservableOnSubscribe<AbcBean>() {
                 @Override
-                public void onSubscribe(Disposable d) {
-                    System.out.println(">>>>onSubscribe....");
+                public void subscribe(ObservableEmitter<AbcBean> e) throws Exception {
+                    // 模拟网络请求，休息3秒
+                    Thread.sleep(3000);
+                    e.onNext(new AbcBean(0, "time is " + System.currentTimeMillis()));
+                    e.onComplete();
                 }
+            }).compose(RxHelper.<AbcBean>scheduleIo2UiThread());
 
-                @Override
-                public void onNext(AbcBean value) {
-                    System.out.println(">>>>onNext....");
-                    ToastUtil.show(RxCacheActivity.this, value.toString());
-                }
+            RxCache.load(this, "abcBean", 5, fromNetwork, false)
+                    .subscribe(new RxLoadingObserver<AbcBean>(this) {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            LogUtil.i("onSubscribe....");
+                            super.onSubscribe(d);
+                        }
 
-                @Override
-                public void onError(Throwable e) {
-                    System.out.println(">>>>onError....");
-                    e.printStackTrace();
-                }
+                        @Override
+                        public void onNext(AbcBean value) {
+                            LogUtil.i("onNext....");
+                            ToastUtil.show(RxCacheActivity.this, value.toString());
+                        }
 
-                @Override
-                public void onComplete() {
-                    System.out.println(">>>>onComplete....");
-                }
-            });
+                        @Override
+                        public void onError(Throwable e) {
+                            super.onError(e);
+                            LogUtil.e("onError....");
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            super.onComplete();
+                            LogUtil.i("onComplete....");
+                        }
+                    });
 
 
         }

@@ -17,13 +17,10 @@ import java.util.Locale;
 public class PermissionUtil {
 
     public static void showPermissionDialog(final Activity activity, String content) {
-        String locale = Locale.getDefault().getLanguage();
-        boolean chinese = "zh".equals(locale);
-
         new AlertDialog.Builder(activity)
-                .setTitle(chinese ? "提示" : "Note")
+                .setTitle(SystemUtil.isChinese() ? "提示" : "Note")
                 .setMessage(content)
-                .setPositiveButton(chinese ? "去设置" : "Go Setting", new DialogInterface.OnClickListener() {
+                .setPositiveButton(SystemUtil.isChinese() ? "去设置" : "Go Setting", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 startSettingIntent(activity);
             }

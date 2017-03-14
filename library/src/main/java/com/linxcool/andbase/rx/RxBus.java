@@ -1,15 +1,8 @@
 package com.linxcool.andbase.rx;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 import io.reactivex.Flowable;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
-import io.reactivex.subjects.PublishSubject;
-import io.reactivex.subjects.Subject;
 
 /**
  * 使用RxJava实现EventBus

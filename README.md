@@ -11,21 +11,17 @@ compile 'com.github.linxcool:andbase:1.0.4'
 [![](https://jitpack.io/v/linxcool/andbase.svg)](https://jitpack.io/#linxcool/andbase)
 
 # library
-* utils
+* util
   * CacheUtil 
-  * ClassUtil
   * FileUtil
-  * NetWorkUtil
-  * PreferencesUtil
   * ...
 * db
   * DbHelper
-  * DbTag
   * DbInfo
+  * ...
 * net
   * DownloadFile
   * DownloadTask
-  * DownloadListener
   * ...
 * rx
   * RxBus

@@ -17,7 +17,6 @@ compile 'com.github.linxcool:andbase:1.0.4'
   * ...
 * db
   * DbHelper
-  * DbInfo
   * ...
 * net
   * DownloadFile

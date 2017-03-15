@@ -22,6 +22,7 @@
         <activity android:name="com.linxcool.andbase.shower.RxBusActivity" />
         <activity android:name="com.linxcool.andbase.shower.RxCacheActivity"/>
         <activity android:name="com.linxcool.andbase.shower.RetrofitActivity"/>
+        <activity android:name="com.linxcool.andbase.shower.GlideActivity"/>
     </application>
 
 </manifest>

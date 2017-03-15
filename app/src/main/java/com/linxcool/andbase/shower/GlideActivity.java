@@ -26,12 +26,11 @@ public class GlideActivity extends BaseActivity implements Shower {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rx_blank);
         enableHomeback();
         setTitle(getName());
 
         ImageView iv = new ImageView(this);
-        addView(iv);
+        setContentView(iv);
 
         Glide.with(this)
                 .load("http://sjbz.fd.zol-img.com.cn/t_s480x800c/g5/M00/0F/09/ChMkJlfJQV-ILMZgAAGGYPOGsPsAAU7cQP-K8oAAYZ4504.jpg")

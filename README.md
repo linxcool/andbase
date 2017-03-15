@@ -4,6 +4,17 @@
 * 依赖该库即自动导入Retrofit2和RxJava2及常用类库，同时亦可参考示例程序集成ButterKnife和Glide。
 
 # gradle
+
+* 在项目根目录的build.gradle文件中添加:
+```
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+* 在app/build.gradle文件中添加依赖:
 ```
 compile 'com.github.linxcool:andbase:1.0.3'
 ```

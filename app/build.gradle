@@ -40,4 +40,7 @@ dependencies {
         exclude group : 'com.android.support'
     })
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    // glide required(dependence support-v4)
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

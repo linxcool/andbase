@@ -24,6 +24,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
+ * Example for Retrofit with RxJava
+ * <pre>
+ *  <a href="http://square.github.io/retrofit/">http://square.github.io/retrofit/</a>
+ *  <a href="https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava2">https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava2</a>
+ * </pre>
  * Created by huchanghai on 2017/3/15.
  */
 public class RetrofitActivity extends BaseActivity implements Shower {
@@ -31,6 +36,7 @@ public class RetrofitActivity extends BaseActivity implements Shower {
     public class Category {
         String cid;
         String name;
+
         @Override
         public String toString() {
             return name;
@@ -94,12 +100,12 @@ public class RetrofitActivity extends BaseActivity implements Shower {
             @Override
             public void onNext(Reply<List<Category>> value) {
                 if (value == null) {
-                    onError(new Exception("server error return null data"));
+                    onError(new Exception("server return null data"));
                     return;
                 }
                 List<Category> list = value.getData();
                 if (list == null) {
-                    onError(new Exception("server error return null data"));
+                    onError(new Exception("server return null data"));
                     return;
                 }
                 categorieList.clear();

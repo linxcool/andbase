@@ -5,7 +5,7 @@
 
 # gradle
 ```
-compile 'com.github.linxcool:andbase:1.0.4'
+compile 'com.github.linxcool:andbase:1.0.3'
 ```
 
 [![](https://jitpack.io/v/linxcool/andbase.svg)](https://jitpack.io/#linxcool/andbase)
@@ -17,7 +17,6 @@ compile 'com.github.linxcool:andbase:1.0.4'
   * ...
 * db
   * DbHelper
-  * ...
 * net
   * DownloadFile
   * DownloadTask

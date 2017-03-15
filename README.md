@@ -16,7 +16,7 @@ allprojects {
 ```
 * 在app/build.gradle文件中添加依赖:
 ```
-compile 'com.github.linxcool:andbase:1.0.3'
+compile 'com.github.linxcool:andbase:1.0.4'
 ```
 
 [![](https://jitpack.io/v/linxcool/andbase.svg)](https://jitpack.io/#linxcool/andbase)

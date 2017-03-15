@@ -1,4 +1,4 @@
-package com.linxcool.andbase.mvp;
+package com.linxcool.andbase.retrofit;
 
 import android.text.TextUtils;
 

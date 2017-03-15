@@ -1,4 +1,4 @@
-package com.linxcool.andbase.mvp;
+package com.linxcool.andbase.retrofit;
 import android.os.Handler;
 
 import com.linxcool.andbase.util.LogUtil;

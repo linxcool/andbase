@@ -1,7 +1,6 @@
 package com.linxcool.andbase.shower;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
 
 import com.linxcool.andbase.BaseActivity;
 import com.linxcool.andbase.demo.R;
@@ -36,7 +35,7 @@ public class RxBusActivity extends BaseActivity implements Shower {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rx_bus);
+        setContentView(R.layout.activity_rx_blank);
         enableHomeback();
         setTitle(getName());
 
@@ -49,11 +48,8 @@ public class RxBusActivity extends BaseActivity implements Shower {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_UP) {
-            RxBus.get().post(new AbcEvent("hello rxbus!"));
-        }
-        return super.onTouchEvent(event);
+    protected void onTouchUp() {
+        RxBus.get().post(new AbcEvent("hello rxbus!"));
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.linxcool.andbase.mvp;
+package com.linxcool.andbase.retrofit;
 
 import android.util.Log;
 
@@ -14,14 +14,22 @@ import okhttp3.ResponseBody;
 import okio.BufferedSource;
 
 /**
+ * <pre>
+ * OkHttpClient httpClient = new OkHttpClient.Builder()
+ *  .connectTimeout(10, TimeUnit.SECONDS)
+ *  .writeTimeout(10, TimeUnit.SECONDS)
+ *  .readTimeout(30, TimeUnit.SECONDS)
+ *  .addInterceptor(new ParamsInterceptor(context))
+ *  .build();
+ *  </pre>
  * Created by huchanghai on 2016/10/24.
  */
-public class DataParamsInterceptor implements Interceptor {
+public class ParamsInterceptor implements Interceptor {
 
     private static boolean logable;
 
-    public static void setLogable(boolean logable) {
-        DataParamsInterceptor.logable = logable;
+    public static void setLogable(boolean enable) {
+        logable = enable;
     }
 
     @Override
@@ -51,7 +59,7 @@ public class DataParamsInterceptor implements Interceptor {
 
     private void printLog(Request request, Response response) throws IOException {
         ResponseBody body = response.body();
-        
+
         BufferedSource source = body.source();
         source.request(Long.MAX_VALUE);
         okio.Buffer buffer = source.buffer();

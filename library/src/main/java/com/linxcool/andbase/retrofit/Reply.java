@@ -1,4 +1,4 @@
-package com.linxcool.andbase.mvp;
+package com.linxcool.andbase.retrofit;
 
 /**
  * 适用于响应代码为 json 且格式如下<pre> {
@@ -6,7 +6,7 @@ package com.linxcool.andbase.mvp;
  *     data: {}
  *     msg:"this is a message!"
  * }
- *</pre>
+ * </pre>
  * Created by huchanghai on 2017/3/10.
  */
 public class Reply<T> {
@@ -17,12 +17,15 @@ public class Reply<T> {
     // 状态码
     private int code = CODE_NULL;
     private int status = CODE_NULL;
+    private int retCode = CODE_NULL;
 
     // 数据内容
     private T data;
+    private T result;
+
     // 扩展数据
     private T ext;
-    
+
     // 错误信息
     private String msg;
     private String desc;
@@ -41,6 +44,7 @@ public class Reply<T> {
     public int getCode() {
         if (code != CODE_NULL) return code;
         if (status != CODE_NULL) return status;
+        if (retCode != CODE_NULL) return retCode;
         return CODE_SUC;
     }
 
@@ -59,13 +63,15 @@ public class Reply<T> {
     }
 
     public T getData() {
-        return data;
+        if(data != null) return data;
+        if(result != null) return result;
+        return null;
     }
 
     public void setData(T data) {
         this.data = data;
     }
-    
+
     public T getExt() {
         return ext;
     }

@@ -1,4 +1,4 @@
-package com.linxcool.andbase.mvp;
+package com.linxcool.andbase.retrofit;
 
 import java.lang.reflect.Type;
 
@@ -8,7 +8,7 @@ import retrofit2.CallAdapter;
 /**
  * Created by huchanghai on 2016/9/11.
  */
-public class ReplyCallAdapter implements CallAdapter<ReplyCall<?>> {
+public class ReplyCallAdapter<R> implements CallAdapter<R, ReplyCall<?>> {
 
     private final Type responseType;
 
@@ -22,8 +22,7 @@ public class ReplyCallAdapter implements CallAdapter<ReplyCall<?>> {
     }
 
     @Override
-    public <T> ReplyCall<?> adapt(Call<T> call) {
+    public ReplyCall<?> adapt(Call<R> call) {
         return new ReplyCall<>(call);
     }
-
 }

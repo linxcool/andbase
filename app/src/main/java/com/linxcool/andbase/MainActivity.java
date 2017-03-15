@@ -51,4 +51,7 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onTouchUp() { }
+
 }

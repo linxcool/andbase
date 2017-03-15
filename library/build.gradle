@@ -24,6 +24,8 @@ dependencies {
     // rxjava required only for there
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    // adapter for retrofit2 compose rxjava
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
 }
 
 task sourcesJar(type: Jar) {

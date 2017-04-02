@@ -62,7 +62,7 @@ public abstract class ReplyObserver<T> implements Observer<Reply<T>> {
         }
     }
 
-    abstract void onSuccess(T t);
+    public abstract void onSuccess(T t);
 
-    abstract void onFailure(int code, String msg);
+    public abstract void onFailure(int code, String msg);
 }

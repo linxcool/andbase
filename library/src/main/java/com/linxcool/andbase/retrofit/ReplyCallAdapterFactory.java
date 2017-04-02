@@ -1,4 +1,5 @@
 package com.linxcool.andbase.retrofit;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

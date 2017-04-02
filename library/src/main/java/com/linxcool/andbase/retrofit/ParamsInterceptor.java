@@ -69,7 +69,7 @@ public class ParamsInterceptor implements Interceptor {
             charset = contentType.charset(charset);
         }
 
-        Log.d("", "request  -> " + request.url() + "\nresponse -> " + buffer.clone().readString(charset));
+        Log.d("andbase", "request  -> " + request.url() + "\nresponse -> " + buffer.clone().readString(charset));
     }
 
 }

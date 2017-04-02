@@ -1,5 +1,7 @@
 package com.linxcool.andbase.retrofit;
 
+import java.io.Serializable;
+
 /**
  * 适用于响应代码为 json 且格式如下<pre> {
  *     code: 0
@@ -9,7 +11,7 @@ package com.linxcool.andbase.retrofit;
  * </pre>
  * Created by huchanghai on 2017/3/10.
  */
-public class Reply<T> {
+public class Reply<T> implements Serializable {
 
     private static final int CODE_NULL = -123456789;
     private static final int CODE_SUC = 0;
@@ -37,6 +39,10 @@ public class Reply<T> {
         return reply;
     }
 
+    /**
+     * 仅支持 code=0 情况，其他情况请使用 getCode()==x 方式判断
+     * @return
+     */
     public boolean isOk() {
         return getCode() == CODE_SUC;
     }

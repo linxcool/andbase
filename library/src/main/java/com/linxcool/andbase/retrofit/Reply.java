@@ -19,6 +19,7 @@ public class Reply<T> implements Serializable {
     // 状态码
     private int code = CODE_NULL;
     private int status = CODE_NULL;
+    private int stat = CODE_NULL;
     private int retCode = CODE_NULL;
 
     // 数据内容
@@ -50,6 +51,7 @@ public class Reply<T> implements Serializable {
     public int getCode() {
         if (code != CODE_NULL) return code;
         if (status != CODE_NULL) return status;
+        if (stat != CODE_NULL) return stat;
         if (retCode != CODE_NULL) return retCode;
         return CODE_SUC;
     }

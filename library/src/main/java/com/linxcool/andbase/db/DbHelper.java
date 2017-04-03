@@ -58,24 +58,7 @@ public class DbHelper<T extends DbInfo> extends SQLiteOpenHelper {
      * @return
      */
     public List<T> selectAll() {
-        synchronized (lock) {
-            SQLiteDatabase db = getReadableDatabase();
-            Cursor cursor = null;
-            List<T> list = new ArrayList<T>();
-            try {
-                String sql = dbInfo.getSelectSql();
-                cursor = db.rawQuery(sql, new String[]{});
-                while (cursor.moveToNext()) {
-                    list.add(constructor.newInstance(cursor));
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (cursor != null) cursor.close();
-                db.close();
-            }
-            return list;
-        }
+        return selectInCase("");
     }
 
     /**
@@ -85,24 +68,7 @@ public class DbHelper<T extends DbInfo> extends SQLiteOpenHelper {
      * @return
      */
     public List<T> selectTop(int limit) {
-        synchronized (lock) {
-            SQLiteDatabase db = getReadableDatabase();
-            Cursor cursor = null;
-            List<T> list = new ArrayList<T>();
-            try {
-                String sql = dbInfo.getSelectSql(String.format("LIMIT %d", limit));
-                cursor = db.rawQuery(sql, new String[]{});
-                while (cursor.moveToNext()) {
-                    list.add(constructor.newInstance(cursor));
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (cursor != null) cursor.close();
-                db.close();
-            }
-            return list;
-        }
+        return selectInCase(String.format("LIMIT %d", limit));
     }
 
     /**
@@ -113,12 +79,21 @@ public class DbHelper<T extends DbInfo> extends SQLiteOpenHelper {
      * @return
      */
     public List<T> selectPage(int offset, int pageSize) {
+        return selectInCase(String.format("LIMIT %d, %d", offset, pageSize));
+    }
+
+    /**
+     * 指定条件查询
+     * @param value
+     * @return
+     */
+    public List<T> selectInCase(String value) {
         synchronized (lock) {
             SQLiteDatabase db = getReadableDatabase();
             Cursor cursor = null;
             List<T> list = new ArrayList<T>();
             try {
-                String sql = dbInfo.getSelectSql(String.format("LIMIT %d, %d", offset, pageSize));
+                String sql = dbInfo.getSelectSql(value);
                 cursor = db.rawQuery(sql, new String[]{});
                 while (cursor.moveToNext()) {
                     list.add(constructor.newInstance(cursor));

@@ -24,7 +24,7 @@ public class DownloadTask implements Runnable {
     public static final int ERROR_CONTENT_LENGTH_INVALID = 402;
     public static final int ERROR_PAUSE = 403;
 
-    private DbHelper dbHelper;
+    private DbHelper<DownloadFile> dbHelper;
 
     private DownloadFile fileInfo;
     private DownloadListener listener;
@@ -38,17 +38,17 @@ public class DownloadTask implements Runnable {
      * @param dbHelper
      * @param listener
      */
-    public DownloadTask(DbHelper dbHelper, DownloadListener listener) {
+    public DownloadTask(DbHelper<DownloadFile> dbHelper, DownloadListener listener) {
         this.dbHelper = dbHelper;
         this.listener = listener;
     }
 
     private void loadDbCache(DownloadFile fileInfo) {
         if (dbHelper != null) {
-            DownloadFile dbCache = dbHelper.select(DownloadFile.KEY_RELATION, fileInfo.relation);
+            DownloadFile dbCache = dbHelper.selectByKey(DownloadFile.KEY_RELATION, fileInfo.relation);
             if (dbCache == null) {
                 dbHelper.insert(fileInfo);
-                dbCache = dbHelper.select(DownloadFile.KEY_RELATION, fileInfo.relation);
+                dbCache = dbHelper.selectByKey(DownloadFile.KEY_RELATION, fileInfo.relation);
             }
             fileInfo.fillData(dbCache);
         }
